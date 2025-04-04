@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 const projects = [{
   title: 'Plataforma de Chatbot',
   category: 'Desenvolvimento Web',
-  description: 'Redesign completo e desenvolvimento de uma plataforma e-commerce com UX aprimorada e maior taxa de conversão.',
+  description: 'Design completo de um assistente virtual para whatsapp.',
   imageUrl: 'https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
   tags: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS']
 }, {
