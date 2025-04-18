@@ -11,10 +11,10 @@ export function AboutSection() {
           </div>
           <div className="md:w-1/2">
             <h2 className="text-3xl md:text-5xl font-black text-[#292929] mb-6">
-              Sobre a <span className="text-blue-600">Lunáris</span>
+              Sobre a <span className="text-blue-600">Lunaris</span>
             </h2>
             <p className="text-gray-600 mb-6">
-              A Lunáris é uma empresa jovem e dinâmica de tecnologia, com 3 anos
+              A Lunaris é uma empresa jovem e dinâmica de tecnologia, com 3 anos
               de atuação no mercado. Apesar do tamanho compacto, entregamos
               soluções robustas e personalizadas para cada cliente.
             </p>

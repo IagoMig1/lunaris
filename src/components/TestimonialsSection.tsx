@@ -2,19 +2,19 @@ import React from 'react';
 import { StarIcon } from 'lucide-react';
 export function TestimonialsSection() {
   const testimonials = [{
-    name: 'Carlos Silva',
-    role: 'CEO, TechCorp',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-    text: 'A Lunáris superou todas as nossas expectativas. O projeto foi entregue no prazo e com excelente qualidade.'
+    name: 'Carlos Eduardo',
+    role: 'Fundador | Studio Barber 33',
+    image: '/carlos.jpg',
+    text: 'A Lunaris superou todas as nossas expectativas. O projeto foi entregue no prazo e com excelente qualidade.'
   }, {
-    name: 'Ana Santos',
-    role: 'Marketing Director, Innovate',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-    text: 'Profissionalismo e dedicação excepcionais. Recomendo fortemente os serviços da Lunáris.'
+    name: 'Patricia Helena',
+    role: 'Fundadora | Líder Despachante',
+    image: '/pat.jpg',
+    text: 'Profissionalismo e dedicação excepcionais. Recomendo fortemente os serviços da Lunaris.'
   }, {
-    name: 'Pedro Oliveira',
-    role: 'CTO, StartupX',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    name: 'Pétala Lacerda',
+    role: 'Ex Prefeita de Caçapava - SP',
+    image: '/pet.jpg',
     text: 'Excelente parceria técnica. A equipe demonstrou grande conhecimento e comprometimento.'
   }];
   return <section className="w-full py-20 bg-[#eaeaea]">

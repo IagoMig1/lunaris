@@ -87,7 +87,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-bold text-[#292929]">Email</h4>
-                  <p className="text-gray-600">contato@lunaris.com.br</p>
+                  <p className="text-gray-600">contatolunaris@outlook.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
