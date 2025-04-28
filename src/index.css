@@ -1,23 +1,36 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+::-webkit-scrollbar-thumb {
+  background: #4e1b92;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5f2ba3;
+}
+
+/* Non-selectable elements */
+.select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Global styles */
 html {
   scroll-behavior: smooth;
 }
-.animate-reveal {
-  animation: reveal 0.8s ease-in-out forwards;
-}
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(20px);
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: white;
 }

@@ -1,27 +1,56 @@
-import React from 'react';
-import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { StatsSection } from './components/StatsSection';
-import { ServicesSection } from './components/ServicesSection';
-import { TechStackSection } from './components/TechStackSection';
-import { ProjectsSection } from './components/ProjectsSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { AboutSection } from './components/AboutSection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import How from './components/HowWeWork';
+import Services from './components/Services';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import CookieConsent from './components/CookieConsent';
+import ProjectDetail from './pages/ProjectDetail';
+import Technologies from './components/Technologies';
+import Testimonials from './components/Testimonials';
+import Stats from './components/Stats';
 export function App() {
-  return <div className="w-full min-h-screen bg-[#eaeaea]">
-      <Header />
-      <main>
-        <HeroSection />
-        <StatsSection />
-        <ServicesSection />
-        <TechStackSection />
-        <ProjectsSection />
-        <TestimonialsSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>;
+  const [showCookieConsent, setShowCookieConsent] = useState(true);
+  useEffect(() => {
+    const hasConsented = localStorage.getItem('cookieConsent');
+    if (hasConsented) {
+      setShowCookieConsent(false);
+    }
+  }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  const handleAcceptCookies = () => {
+    localStorage.setItem('cookieConsent', 'true');
+    setShowCookieConsent(false);
+  };
+  return <Router>
+      <div className="bg-[#121212] text-white min-h-screen overflow-x-hidden">
+        <Header />
+        <AnimatePresence mode="wait">
+          <Routes>
+            <Route path="/" element={<main>
+                  <Hero />
+                  <Stats />
+                  <About />
+                  <Technologies />
+                  <Projects />
+                  <Services />
+                  
+                  < How />
+           
+                  <Contact />
+                </main>} />
+            <Route path="/project/:id" element={<ProjectDetail />} />
+          </Routes>
+        </AnimatePresence>
+        <Footer />
+        {showCookieConsent && <CookieConsent onAccept={handleAcceptCookies} />}
+      </div>
+    </Router>;
 }
