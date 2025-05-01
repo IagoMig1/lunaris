@@ -1,56 +1,76 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import How from './components/HowWeWork';
-import Services from './components/Services';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import ProjectDetail from './pages/ProjectDetail';
-import Technologies from './components/Technologies';
-import Testimonials from './components/Testimonials';
-import Stats from './components/Stats';
+
+// Lazy-loaded components
+const Hero = lazy(() => import('./components/Hero'));
+const Stats = lazy(() => import('./components/Stats'));
+const About = lazy(() => import('./components/About'));
+const Technologies = lazy(() => import('./components/Technologies'));
+const Projects = lazy(() => import('./components/Projects'));
+const Services = lazy(() => import('./components/Services'));
+const How = lazy(() => import('./components/HowWeWork'));
+const Contact = lazy(() => import('./components/Contact'));
+
+function ScrollToTop() {
+  const location = useLocation();
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }, [location.pathname]);
+  return null;
+}
+
 export function App() {
   const [showCookieConsent, setShowCookieConsent] = useState(true);
+
   useEffect(() => {
     const hasConsented = localStorage.getItem('cookieConsent');
     if (hasConsented) {
       setShowCookieConsent(false);
     }
   }, []);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+
   const handleAcceptCookies = () => {
     localStorage.setItem('cookieConsent', 'true');
     setShowCookieConsent(false);
   };
-  return <Router>
+
+  return (
+    <Router>
+      <ScrollToTop />
       <div className="bg-[#121212] text-white min-h-screen overflow-x-hidden">
         <Header />
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<main>
-                  <Hero />
-                  <Stats />
-                  <About />
-                  <Technologies />
-                  <Projects />
-                  <Services />
-                  
-                  < How />
-           
-                  <Contact />
-                </main>} />
+            <Route
+              path="/"
+              element={
+                <Suspense fallback={<div className="text-center py-20">Carregando...</div>}>
+                  <main>
+                    <Hero />
+                    <Stats />
+                    <About />
+                    <Technologies />
+                    <Projects />
+                    <Services />
+                    <How />
+                    <Contact />
+                  </main>
+                </Suspense>
+              }
+            />
             <Route path="/project/:id" element={<ProjectDetail />} />
           </Routes>
         </AnimatePresence>
         <Footer />
         {showCookieConsent && <CookieConsent onAccept={handleAcceptCookies} />}
       </div>
-    </Router>;
+    </Router>
+  );
 }
