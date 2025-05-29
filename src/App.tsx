@@ -51,18 +51,22 @@ export function App() {
             <Route
               path="/"
               element={
-                <Suspense fallback={<div className="text-center py-20">Carregando...</div>}>
-                  <main>
+                <>
+                  <Suspense fallback={<div className="text-center py-20">Carregando Hero...</div>}>
                     <Hero />
+                  </Suspense>
+                  <Suspense fallback={<div className="text-center py-20">Carregando estatísticas...</div>}>
                     <Stats />
+                  </Suspense>
+                  <Suspense fallback={<div className="text-center py-20">Carregando conteúdo...</div>}>
                     <About />
                     <Technologies />
                     <Projects />
                     <Services />
                     <How />
                     <Contact />
-                  </main>
-                </Suspense>
+                  </Suspense>
+                </>
               }
             />
             <Route path="/project/:id" element={<ProjectDetail />} />
