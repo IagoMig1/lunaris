@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { CheckCircle, Star, Trophy, Users } from 'lucide-react';
 
 const Stats = () => {
@@ -34,35 +33,22 @@ const Stats = () => {
     <section className="py-20 bg-[#0f0f0f]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <motion.div
+          {stats.map((stat) => (
+            <div
               key={stat.label}
-              className="bg-gradient-to-b from-[#23184d]/30 to-[#282524]/30 p-8 rounded-xl backdrop-blur-sm border border-white/5 will-change-transform"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              className="bg-gradient-to-b from-[#23184d]/30 to-[#282524]/30 p-8 rounded-xl backdrop-blur-sm border border-white/5"
             >
-              <motion.div
-                className="bg-[#4e1b92]/20 p-4 rounded-lg w-fit mb-6 will-change-transform"
-                whileHover={{ rotate: -10 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div className="bg-[#4e1b92]/20 p-4 rounded-lg w-fit mb-6">
                 {stat.icon}
-              </motion.div>
+              </div>
 
-              <motion.h3
-                className="text-4xl font-bold mb-2 bg-gradient-to-r from-[#4e1b92] to-purple-300 bg-clip-text text-transparent"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-              >
+              <h3 className="text-4xl font-bold mb-2 bg-gradient-to-r from-[#4e1b92] to-purple-300 bg-clip-text text-transparent">
                 {stat.value}
-              </motion.h3>
+              </h3>
 
               <h4 className="text-xl font-semibold mb-2">{stat.label}</h4>
               <p className="text-gray-400">{stat.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
